@@ -254,9 +254,11 @@ def test_historian():
         print("\n  历史场景:")
         for i, scenario in enumerate(similar['scenarios'], 1):
             success_str = "✅" if scenario['success'] else "❌"
+            pred = scenario.get('predicted') or 0
+            actual = scenario.get('actual') or 0
             print(f"    {i}. {scenario['date']} {scenario['symbol']} | "
                   f"相似度{scenario['similarity']:.2f} | "
-                  f"预测{scenario['predicted']:.2f}% → 实际{scenario['actual']:.2f}% {success_str}")
+                  f"预测{pred:.2f}% → 实际{actual:.2f}% {success_str}")
     else:
         print("  ⚠️ 无历史数据")
     

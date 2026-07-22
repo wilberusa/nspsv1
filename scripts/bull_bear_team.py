@@ -257,6 +257,7 @@ def test_bull_bear_team():
         cur.execute("""
             INSERT INTO paper_trades (id, trade_date, symbol, market, pnl_pct, status)
             VALUES (%s, CURRENT_DATE, %s, %s, %s, %s)
+            ON CONFLICT (id) DO NOTHING
         """, (i, symbol, market, pnl, status))
     bull.conn.commit()
     print(f"  已插入{len(test_data)}条测试数据")
